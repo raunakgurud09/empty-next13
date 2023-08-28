@@ -2,7 +2,7 @@ import { Link } from "lucide-react"
 
 export default function Blog() {
   return (
-    <section className="flex flex-col w-full mx-auto space-y-4 drop-shadow-2xl">
+    <section id="blog" className=" flex flex-col w-full mx-auto space-y-4 drop-shadow-2xl">
       <h3 className="text-2xl px-4">Blog</h3>
       <div className="flex flex-col space-y-2">
         {
@@ -13,8 +13,6 @@ export default function Blog() {
           ))
         }
       </div>
-
-
     </section>
   )
 }
@@ -23,7 +21,7 @@ function BlogCard() {
   return (
     <div className="py-4  px-0  flex flex-col md:flex-row hover:scale-[1.02] transition-all rounded-md">
 
-      <div className="w-full md:w-2/12 h-56 md:h-40 px-0 md:px-1">
+      <div className="w-full md:w-2/12 h-56 md:h-40 px-0 md:pr-1">
         {/* image */}
         <div className="bg-white/10 w-full h-full rounded-md"></div>
       </div>

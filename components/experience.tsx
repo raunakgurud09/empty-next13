@@ -9,7 +9,7 @@ const tools = [
 
 export default function Experience() {
   return (
-    <section className="flex flex-col w-full mx-auto space-y-4  drop-shadow-2xl">
+    <section id="experience" className="flex flex-col w-full mx-auto space-y-4 drop-shadow-2xl">
       <h3 className="text-2xl px-4">Experience</h3>
       <div className="flex flex-col space-y-2">
         {
