@@ -16,6 +16,11 @@
   }
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 3rem;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -48,7 +53,7 @@ body {
 
 
 
-.grid {
+.grid-class {
   background-size: 50px 50px;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.033) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.033) 1px, transparent 1px);
