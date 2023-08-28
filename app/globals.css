@@ -25,3 +25,44 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #4b515b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5c636e;
+}
+
+
+
+.grid {
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.033) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.033) 1px, transparent 1px);
+}
+
+.circle-1 {
+  will-change: transform;
+  animation: circle-1-keyframes 15s ease-in-out infinite alternate;
+}
+
+@keyframes circle-1-keyframes {
+  0% {
+  }
+  100% {
+    transform: translateX(50px) translateY(50px);
+  }
+}
