@@ -71,3 +71,35 @@ body {
     transform: translateX(50px) translateY(50px);
   }
 }
+
+
+.animation {
+  height:50px;
+  overflow:hidden;
+  margin-left: 0.25rem;
+}
+
+.animation > div > div {
+  padding: 0.25rem 0rem;
+  height:1.81rem;
+  margin-bottom: 2.81rem;
+  display:inline-block;
+}
+
+.animation div:first-child {
+  animation: text-animation 8s infinite;
+}
+
+
+@keyframes text-animation {
+  0% {margin-top: 0;}
+  10% {margin-top: 0;}
+  20% {margin-top: -4.10rem;}
+  30% {margin-top: -4.10rem;}
+  40% {margin-top: -4.10rem;}
+  60% {margin-top: -8.40rem;}
+  70% {margin-top: -8.40rem;}
+  80% {margin-top: -8.40rem;}
+  90% {margin-top: 0;}
+  100% {margin-top: 0;}
+}
