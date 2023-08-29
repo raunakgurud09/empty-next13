@@ -6,7 +6,7 @@ import Project from "@/components/project";
 export default function Home() {
   return (
     <main className="">
-      <div className="flex flex-col w-full md:w-[760px] mx-auto space-y-16">
+      <div className="flex flex-col w-full md:w-[768px] mx-auto space-y-16">
         <Main />
         <Experience />
         <Blog />
