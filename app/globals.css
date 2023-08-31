@@ -2,21 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+    --grid-color: 26, 24, 24, 0.033;
+  }
+
+  [data-theme="dark"] {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --grid-color: 255, 255, 255, 0.033;
   }
 }
 
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 3rem;
 }
@@ -29,6 +31,10 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+li {
+  color: rgb(var(--foreground-rgb));
 }
 
 /* Custom Scrollbar */
@@ -51,12 +57,14 @@ body {
   background: #5c636e;
 }
 
-
-
 .grid-class {
   background-size: 50px 50px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.033) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.033) 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      rgb(var(--grid-color)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(var(--grid-color)) 1px, transparent 1px);
 }
 
 .circle-1 {
@@ -72,34 +80,52 @@ body {
   }
 }
 
-
 .animation {
-  height:50px;
-  overflow:hidden;
+  height: 50px;
+  overflow: hidden;
   margin-left: 0.25rem;
 }
 
 .animation > div > div {
   padding: 0.25rem 0rem;
-  height:1.81rem;
+  height: 1.81rem;
   margin-bottom: 2.81rem;
-  display:inline-block;
+  display: inline-block;
 }
 
 .animation div:first-child {
   animation: text-animation 8s infinite;
 }
 
-
 @keyframes text-animation {
-  0% {margin-top: 0;}
-  10% {margin-top: 0;}
-  20% {margin-top: -4.10rem;}
-  30% {margin-top: -4.10rem;}
-  40% {margin-top: -4.10rem;}
-  60% {margin-top: -8.40rem;}
-  70% {margin-top: -8.40rem;}
-  80% {margin-top: -8.40rem;}
-  90% {margin-top: 0;}
-  100% {margin-top: 0;}
+  0% {
+    margin-top: 0;
+  }
+  10% {
+    margin-top: 0;
+  }
+  20% {
+    margin-top: -4.1rem;
+  }
+  30% {
+    margin-top: -4.1rem;
+  }
+  40% {
+    margin-top: -4.1rem;
+  }
+  60% {
+    margin-top: -8.4rem;
+  }
+  70% {
+    margin-top: -8.4rem;
+  }
+  80% {
+    margin-top: -8.4rem;
+  }
+  90% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 0;
+  }
 }

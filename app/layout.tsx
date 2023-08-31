@@ -2,6 +2,7 @@ import Header from '@/components/header'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Provider from "./provider"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,8 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} grid-class`}>
-        <Header />
-        {children}
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   )
