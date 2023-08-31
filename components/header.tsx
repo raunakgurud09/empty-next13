@@ -1,6 +1,7 @@
 import { Moon } from "lucide-react";
 import Signature from "./signature";
 import ThemeSwitch from "./themeSwitch";
+import Menu from "./menu";
 
 export default function Header() {
   return (
@@ -9,23 +10,10 @@ export default function Header() {
         <Signature />
         <div>Raunak Gurud</div>
       </div>
-      <div className="flex space-x-3  items-center justify-center">
-        <ul className="flex space-x-3">
-          <a href="/#experience">
-            <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Experience</li>
-          </a>
-          <a href="/#projects">
-            <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Projects</li>
-          </a>
-          <a href="/#blog">
-            <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Blog</li>
-          </a>
-        </ul>
-        <span className="h-[60%] border border-white/10 border-l-gray-800"></span>
-        <div>
-          {/* <Moon /> */}
-          <ThemeSwitch />
-        </div>
+      <div className="flex md:flex-row flex-row-reverse space-x-3 bg-blue-200/10 items-center justify-center">
+        <Menu />
+        <span className="h-[60%] border-none md:border  border-white/10 border-l-white/10 "></span>
+        <ThemeSwitch />
       </div>
     </header>
   )

@@ -17,13 +17,13 @@ const ThemeSwitch = () => {
 
 
   return (
-    <div>
+    <>
       {
         toggle
-          ? <button onClick={() => { setToggle(!toggle); setTheme('light') }}><Sun /></button>
-          : <button onClick={() => { setToggle(!toggle); setTheme('dark') }}><Moon /></button>
+          ? <button onClick={() => { setToggle(!toggle); setTheme('light') }}><Sun className='opacity-60' /></button>
+          : <button onClick={() => { setToggle(!toggle); setTheme('dark') }}><Moon className='opacity-60'/></button>
       }
-    </div>
+    </>
   )
 }
 
