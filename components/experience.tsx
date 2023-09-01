@@ -1,10 +1,5 @@
 import { Link } from "lucide-react"
-
-const tools = [
-  "Next.js",
-  "Redux",
-  "Node"
-]
+import { experiences } from "@/data/experience.js"
 
 
 export default function Experience() {
@@ -13,9 +8,17 @@ export default function Experience() {
       <h3 className="font-bold text-2xl px-4">Experience</h3>
       <div className="flex flex-col space-y-2">
         {
-          [...Array(1)].map((_, i) => (
+          experiences.map((exp, i) => (
             <div className="px-4" key={i}>
-              <ExperienceCard />
+              <ExperienceCard
+                _id={exp._id}
+                date={exp.date}
+                position={exp.position}
+                proof_of_work={exp.proof_of_work}
+                place_of_work={exp.place_of_work}
+                brief={exp.brief}
+                skills={exp.skills}
+              />
             </div>
           ))
         }
@@ -24,20 +27,45 @@ export default function Experience() {
   )
 }
 
-function ExperienceCard() {
+type Props = {
+  _id: string;
+  date: string;
+  position: string;
+  proof_of_work: string;
+  place_of_work: string;
+  brief: string;
+  skills: string[];
+}
+
+function ExperienceCard(
+  {
+    _id,
+    date,
+    position,
+    proof_of_work,
+    place_of_work,
+    brief,
+    skills
+  }: Props
+) {
   return (
     <div className="flex flex-col md:flex-row mx-auto py-4 ease-in transition-all rounded-md">
-      <div className="w-full md:w-2/12 p-1 py-2 text-xs">Jun 2022 - ongoing</div>
+      <div className="w-full md:w-2/12 p-1 py-2 text-xs">{date}</div>
       <div className="w-full md:w-9/12 flex flex-col p-1 ">
-        <h4 className="text-lg font-semibold">Title of position</h4>
+        <h4 className="text-lg font-semibold">{position}</h4>
         <div className="flex items-center justify-start">
-          <Link size={12}/>
-          <p className="opacity-80 ml-2"> link to work</p>
+          <p className="opacity-80">
+            <a href={proof_of_work} target="_black">
+              @{place_of_work}
+            </a>
+          </p>
         </div>
-        <p className="text-sm font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, fuga est, nam alias dolore sunt quo sit facere esse cumque debitis animi explicabo eum, eius quidem commodi quis repellendus excepturi necessitatibus sapiente deleniti ut ipsum sequi. Amet quod dolorem deserunt placeat, debitis corrupti delectus fugiat mollitia, laboriosam facilis officiis deleniti</p>
+        <p className="text-sm font-light">
+          {brief}
+        </p>
         <div className="flex flex-row mt-2">
           {
-            tools.map((t, i) =>
+            skills.map((t, i) =>
               <p key={i} className="text-sm">
                 {i != 0 && <span className="mx-1">•</span>}
                 {t} </p>

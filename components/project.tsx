@@ -8,6 +8,8 @@ import { useState } from "react"
 import More from "./more"
 import { AiFillGithub } from "react-icons/ai"
 
+import { projects } from "@/data/projects.js"
+
 const skills = [
   {
     name: "Docker",
@@ -51,9 +53,17 @@ export default function Project() {
       <h3 className="text-2xl px-4 font-bold">Project</h3>
       <div className="flex flex-col space-y-2">
         {
-          [...Array(1)].map((_, i) => (
+          projects.map((proj, i) => (
             <div className="px-4" key={i}>
-              <ProjectCard />
+              <ProjectCard
+                _id={proj._id}
+                name={proj.name}
+                date={proj.date}
+                live_website={proj.live_website}
+                github={proj.github}
+                image={proj.image}
+                brief={proj.brief}
+              />
             </div>
           ))
         }
@@ -64,30 +74,52 @@ export default function Project() {
   )
 }
 
-function ProjectCard() {
+type Props = {
+  _id: string;
+  date?: string;
+  name: string;
+  live_website?: string;
+  github?: string;
+  brief: string;
+  image?: string;
+  skills?: {
+    name?: string;
+    icon?: string;
+  }[];
+}
+
+function ProjectCard({
+  _id,
+  date,
+  name,
+  live_website,
+  github,
+  brief,
+  image,
+}: Props) {
   const [show, setShow] = useState(false)
 
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-2/12 flex flex-col-reverse md:flex-col">
-        <p className="text-xs mt-1 mb-2" >Jun 2022 - Aug 2022</p>
+        <p className="text-xs mt-1 mb-2" >{date}</p>
         <div className="w-full flex justify-start md:justify-end items-center">
-          <NextImage
-            src={briefly}
+          {/* <NextImage
+            src={brief}
             alt="logo"
             width={30}
             height={30}
             className="m-1"
-          />
+          /> */}
         </div>
       </div>
       <div className="w-full md:ml-2 md:w-10/12">
-        <h4 className="text-xl font-semibold">Project name</h4>
-        <div className="flex space-x-2">
-          <a href=""><Link size={12} /></a>
-          <a href=""><AiFillGithub size={12} /></a>
+        <h4 className="text-xl font-semibold">{name}</h4>
+        <div className="flex space-x-2 my-2">
+          {live_website && <a href={live_website} target="_black"><Link size={20} /></a>}
+          {github && <a href={github} target="_black"><AiFillGithub size={20} /></a>}
         </div>
-        <p className="font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, aspernatur alias, debitis cumque ducimus obcaecati tempore numquam dicta, veritatis expedita maiores. Aliquid repellendus sint sunt? Sint iure deleniti dicta praesentium.</p>
+        <p className="font-light">{brief}</p>
         <div className="flex flex-wrap my-1">
           {
             show ? skills.map((skill, i) => {

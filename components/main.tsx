@@ -7,7 +7,7 @@ import Socials from './socials'
 
 export default function Main() {
   return (
-    <section className='flex flex-col-reverse md:flex-row w-full mx-auto space-y-4 px-4 mt-32 mb-36 '>
+    <section className='flex flex-col-reverse md:flex-row w-full h-screen   mx-auto space-y-4 px-4  '>
       <div className="absolute top-0 left-0 right-0">
         <div className="absolute left-10 md:left-32 top-1 -z-10 overflow-visible opacity-20">
           <div className="circle-1 -z-10 h-[400px] w-[200px] rounded-full bg-cyan-400 mix-blend-multiply blur-[128px]" />
