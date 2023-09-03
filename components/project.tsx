@@ -13,35 +13,35 @@ import { projects } from "@/data/projects.js"
 const skills = [
   {
     name: "Docker",
-    icon: <ContainerIcon />
+    icon: <ContainerIcon size={16} />
   },
   {
     name: "React",
-    icon: <Atom />
+    icon: <Atom size={16} />
   },
   {
     name: "kubernetes",
-    icon: <Boxes />
+    icon: <Boxes size={16} />
   },
   {
     name: "Next.JS",
-    icon: <Pencil />
+    icon: <Pencil size={16} />
   },
   {
     name: "Cut",
-    icon: <Clapperboard />
+    icon: <Clapperboard size={16} />
   },
   {
     name: "Metamask",
-    icon: <Cat />
+    icon: <Cat size={16} />
   },
   {
     name: "tailwindcss",
-    icon: <Wind />
+    icon: <Wind size={16} />
   },
   {
     name: "Storybook",
-    icon: <BookPlus />
+    icon: <BookPlus size={16} />
   },
 
 
@@ -114,12 +114,12 @@ function ProjectCard({
         </div>
       </div>
       <div className="w-full md:ml-2 md:w-10/12">
-        <h4 className="text-xl font-semibold">{name}</h4>
+        <h4 className="text-lg font-semibold">{name}</h4>
         <div className="flex space-x-2 my-2">
           {live_website && <a href={live_website} target="_black"><Link size={20} /></a>}
           {github && <a href={github} target="_black"><AiFillGithub size={20} /></a>}
         </div>
-        <p className="font-light">{brief}</p>
+        <p className="text-sm font-light">{brief}</p>
         <div className="flex flex-wrap my-1">
           {
             show ? skills.map((skill, i) => {
