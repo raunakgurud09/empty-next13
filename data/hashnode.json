@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "_id": "64ff01517b4fbf4119831891",
+      "slug": "will-bun-replace-node",
+      "title": "Will Bun replace Node ???",
+      "brief": "What is Bun?\nBun is a new runtime that provides an all-in-one toolkit for JavaScript and TypeScript apps. It ships as a single executable called Bun, making your app run really fast.\nHow Does Bun Do It?\nUnlike other runtimes, such as Node or Deno, wh...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1694282035778/db080909-6f92-483a-b1db-01792e9d0fdb.png",
+      "dateAdded": "2023-09-11T12:00:17.660Z",
+      "readingTime": {
+        "text": "3 min read",
+        "minutes": 2.415,
+        "time": 144900,
+        "words": 483
+      },
+      "wordCount": 506
+    },
+    {
       "_id": "642da535a7ccc50a04716f0a",
       "slug": "before-you-commit-m",
       "title": "Before you Commit -m \"\"",
