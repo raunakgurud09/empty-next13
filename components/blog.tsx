@@ -1,6 +1,6 @@
-import { posts } from "@/data/hashnode.js"
 import NextImage from "next/image"
 import { format, parseISO } from "date-fns"
+import { posts } from "@/data/hashnode";
 
 export default function Blog() {
   return (
@@ -8,7 +8,7 @@ export default function Blog() {
       <h3 className="text-2xl font-bold px-4">Blog</h3>
       <div className="flex flex-col space-y-2">
         {
-          posts.map((post, i) => (
+          posts.map((post: any, i) => (
             <div className="px-4" key={i}>
               <BlogCard
                 _id={post._id}
