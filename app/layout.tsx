@@ -1,15 +1,20 @@
-import Header from '@/components/header'
 import './globals.css'
+
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Noto_Serif_JP } from "next/font/google"
+
 import ThemeProvider from "../components/provider"
 import { siteConfig } from '@/config/site'
 
+import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
+// import { Noto_Serif_JP } from "next/font/google"
+// const noto = Noto_Serif_JP({ })
+
+import Header from '@/components/header'
+import Footer from '@/components/footer'
 
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -63,10 +68,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body className={`${inter.className} grid-class`}>
         <ThemeProvider>
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

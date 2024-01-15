@@ -12,34 +12,42 @@ import { projects } from "@/data/projects.js"
 
 const skills = [
   {
+    _id: 1,
     name: "Docker",
     icon: <ContainerIcon size={16} />
   },
   {
+    _id: 2,
     name: "React",
     icon: <Atom size={16} />
   },
   {
+    _id: 3,
     name: "kubernetes",
     icon: <Boxes size={16} />
   },
   {
+    _id: 4,
     name: "Next.JS",
     icon: <Pencil size={16} />
   },
   {
+    _id: 5,
     name: "Cut",
     icon: <Clapperboard size={16} />
   },
   {
+    _id: 6,
     name: "Metamask",
     icon: <Cat size={16} />
   },
   {
+    _id: 7,
     name: "tailwindcss",
     icon: <Wind size={16} />
   },
   {
+    _id: 8,
     name: "Storybook",
     icon: <BookPlus size={16} />
   },
@@ -53,24 +61,29 @@ export default function Project() {
       <h3 className="text-2xl px-4 font-bold">Project</h3>
       <div className="flex flex-col space-y-2">
         {
-          projects.map((proj, i) => (
-            <div className="px-4" key={i}>
-              <ProjectCard
-                _id={proj._id}
-                name={proj.name}
-                date={proj.date}
-                live_website={proj.live_website}
-                github={proj.github}
-                image={proj.image}
-                brief={proj.brief}
-              />
-            </div>
-          ))
+          projects.map(
+            (proj) => {
+              return (
+                <ProjectCard
+                  key={proj._id}
+                  _id={proj._id.toString()}
+                  name={proj.name}
+                  date={proj.date}
+                  live_website={proj.live_website}
+                  github={proj.github}
+                  image={proj.image}
+                  brief={proj.brief}
+                />
+              )
+            }
+          )
         }
       </div>
+      {/* {< li className = "px-4" key = { proj._id } >
+          </>} */}
 
 
-    </section>
+    </section >
   )
 }
 
@@ -100,7 +113,7 @@ function ProjectCard({
   const [show, setShow] = useState(false)
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div key={_id} className="flex flex-col md:flex-row px-4">
       <div className="w-full md:w-2/12 flex flex-col-reverse md:flex-col">
         <p className="text-xs mt-1 mb-2" >{date}</p>
         <div className="w-full flex justify-start md:justify-end items-center">
