@@ -57,11 +57,14 @@ const footer = [
 ]
 
 export default function Footer() {
-  const year = new Date().getFullYear() 
+  const year = new Date().getFullYear()
 
   return (
+    // <header className="w-full flex justify-center">
+    //   <div className="w-full max-w-[1280px] md:px-4 py-2 flex justify-between">
+
     <footer className="w-full mt-96 border-t border-t-white/20 bg-black px-4 py-2 flex justify-between text-sm text-400">
-      <div className="container mx-auto flex-row py-4 sm:flex justify-between">
+      <div className="container max-w-[1280px] mx-auto flex-row py-4 sm:flex justify-between">
         <div className="flex flex-col justify-start ">
           <Signature />
           <p>&#169; {year} Raunak Gurud</p>
