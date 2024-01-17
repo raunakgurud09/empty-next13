@@ -1,6 +1,6 @@
 import NextImage from "next/image"
 import { format, parseISO } from "date-fns"
-import { posts } from "@/data/hashnode.json"
+import { posts } from "@/data/hashnode"
 
 
 export default function Blog() {

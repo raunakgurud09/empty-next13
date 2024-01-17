@@ -1,6 +1,21 @@
 {
   "posts": [
     {
+      "_id": "65a235df278eec74f51072c9",
+      "slug": "websockets-unlocked-mastering-the-art-of-real-time-communication",
+      "title": "WebSockets Unlocked:  Mastering the Art of Real-Time Communication",
+      "brief": "Hey there! 🌟 Ready to dive into the exciting world of real-time communication with WebSocket? 🚀 Join me in this series where we'll start from the basics, craft awesome chat/video apps, and master scaling with Redis and Kafka. Get set for a journey ...",
+      "coverImage": "https://cdn.hashnode.com/res/hashnode/image/upload/v1705129128112/3d7964fd-c2a7-4ebf-895b-d041603fde46.png",
+      "dateAdded": "2024-01-13T07:03:59.773Z",
+      "readingTime": {
+        "text": "14 min read",
+        "minutes": 13.33,
+        "time": 799800,
+        "words": 2666
+      },
+      "wordCount": 2666
+    },
+    {
       "_id": "64ff01517b4fbf4119831891",
       "slug": "will-bun-replace-node",
       "title": "Will Bun replace Node ???",

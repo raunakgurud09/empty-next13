@@ -1,6 +1,6 @@
 export const projects = [
   {
-    _id: "1",
+    _id: 1,
     date: "Jun 2022 - Aug 2023",
     name: "SHOP-ecommerce",
     live_website: "shop.project.raunakgurud.com",
@@ -16,7 +16,7 @@ export const projects = [
     ],
   },
   {
-    _id: "2",
+    _id: 2,
     date: "Jun 2022 - Aug 2023",
     name: "Briefly",
     github: "https://github.com/raunakgurud09/briefly",
@@ -31,7 +31,7 @@ export const projects = [
     ],
   },
   {
-    _id: "3",
+    _id: 3,
     date: "Jun 2022 - Aug 2023",
     name: "Renm - store and share tracks",
     live_website: "music-app-seven-beryl.vercel.app",

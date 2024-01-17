@@ -19,7 +19,7 @@ export default function Main() {
 
       <div className='w-full md:w-3/4'>
         <h1 className=' text-5xl '>Raunak Gurud</h1>
-        <p className='flex'>
+        <div className='flex'>
           <span className='p-1'>
             I&apos;m a
           </span>
@@ -28,7 +28,7 @@ export default function Main() {
             <div className="second"><div>Frontend engineer</div></div>
             <div className="third"><div>Backend engineer</div></div>
           </div>
-        </p>
+        </div>
         <br />
         <p className='font-normal'>
           I am a fullstack developer, computer engineer and a freelancer. I am currently learning about building robust and scalable applications. I am interested in various technology like web3,devops and IOT.

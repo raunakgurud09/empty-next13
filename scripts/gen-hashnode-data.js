@@ -1,6 +1,6 @@
-import axios from "axios";
-import fs from "fs";
-import readingTime from "reading-time";
+const axios = require("axios");
+const fs = require("fs");
+const readingTime = require("reading-time");
 
 const HASHNODE_DATA_FILE_PATH = "./data/hashnode.json";
 const HASHNODE_API_URL = "https://api.hashnode.com/";

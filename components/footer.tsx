@@ -63,7 +63,7 @@ export default function Footer() {
     // <header className="w-full flex justify-center">
     //   <div className="w-full max-w-[1280px] md:px-4 py-2 flex justify-between">
 
-    <footer className="w-full mt-96 border-t border-t-white/20 bg-black px-4 py-2 flex justify-between text-sm text-400">
+    <footer className="w-full mt-96 border-t border-t-white/20 dark:bg-black bg-white px-4 py-2 flex justify-between text-sm text-400">
       <div className="container max-w-[1280px] mx-auto flex-row py-4 sm:flex justify-between">
         <div className="flex flex-col justify-start ">
           <Signature />
