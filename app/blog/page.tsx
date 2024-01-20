@@ -15,7 +15,7 @@ export default async function BlogPage() {
   const posts = allPosts
     .filter((post) => post.published)
     .sort((a, b) => {
-      return compareDesc(new Date(b.date), new Date(a.date))
+      return compareDesc(new Date(a.date), new Date(b.date))
     })
 
   const blog = posts[0]
@@ -77,7 +77,7 @@ export default async function BlogPage() {
 
       <div className="my-2 mt-20" />
       {posts?.length ? (
-        <div className="grid gap-10 sm:grid-cols-2">
+        <div className="grid gap-10 sm:grid-cols-3">
           {posts.map((post, index) => (
             <article
               key={post._id}

@@ -9,7 +9,7 @@ export default async function Layout({
 }: LayoutProps) {
   return (
     <div className="flex min-h-screen ">
-      <main className="max-w-[960px] mx-auto ">
+      <main className="max-w-[780px] mx-auto ">
         {children}
       </main>
     </div>
