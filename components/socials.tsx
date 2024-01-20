@@ -3,7 +3,7 @@ import { SiHashnode } from "react-icons/si"
 
 export default function Socials() {
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-4 text-300 p-2 items-center">
       <a href="https://github.com/raunakgurud09" target="_blank">
         <AiFillGithub size={24} className="hover:cursor-pointer hover:text-cyan-400" />
       </a>

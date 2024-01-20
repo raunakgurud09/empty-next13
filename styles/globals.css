@@ -1,4 +1,5 @@
 @tailwind base;
+@import "./mdx.css";
 @tailwind components;
 @tailwind utilities;
 

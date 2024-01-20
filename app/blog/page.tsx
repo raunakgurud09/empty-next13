@@ -1,7 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { allPosts } from "contentlayer/generated"
-import { compareDesc } from "date-fns"
+import { Author, Post, allPosts } from "contentlayer/generated"
+import { compareDesc, format } from "date-fns"
+import "@/styles/mdx.css"
+
 
 import { formatDate } from "@/lib/utils"
 
@@ -13,22 +15,67 @@ export default async function BlogPage() {
   const posts = allPosts
     .filter((post) => post.published)
     .sort((a, b) => {
-      return compareDesc(new Date(a.date), new Date(b.date))
+      return compareDesc(new Date(b.date), new Date(a.date))
     })
 
+  const blog = posts[0]
+
+
   return (
-    <div className="container max-w-4xl py-6 lg:py-10">
-      <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block font-heading text-4xl tracking-tight lg:text-5xl">
-            Blog
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            A blog built using Contentlayer. Posts are written in MDX.
-          </p>
+    <div className="container mx-auto px-4  overflow-hidden py-12 lg:py-20">
+      <div className=" grid grid-8 lg:grid-cols-2 lg:gap-16">
+        <div className="relative w-full aspect-[2/1] lg:aspect-[3/2] overflow-auto rounded-lg border-[0.1px] dark:border-white/10">
+          <Image
+            src={(blog.image ? blog.image : blog.image)}
+            layout="fill"
+            objectFit="cover"
+            alt="blog thumbnail"
+            className="hover: "
+          />
+        </div>
+        <div className="flex flex-col space-y-2 text-white/80">
+          <div className="text-scale-900 flex space-x-2 text-sm">
+            <p>{format(new Date(blog.date), " dd MMMM yyyy ")}</p>
+            <p>•</p>
+            <p>{" 12 min"}</p>
+          </div>
+          <div>
+            <h2 className="font-semibold text-3xl">
+              {blog.title}
+            </h2>
+            <p className="text-lg">
+              {blog.description}
+            </p>
+          </div>
+
+          <div className="grid w-max grid-flow-col grid-rows-4 gap-4 bg-blue-200">
+            {blog.authors.map((author: any) => {
+              return (
+                <div className="flex items-center space-x-3" key={author._id}>
+                  {author.avatar && (
+                    <div className="relative h-10 w-10 overflow-auto">
+                      <Image
+                        src={author.avatar}
+                        alt={`${author.avatar} avatar`}
+                        className="rounded-full"
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-col">
+                    <span className="text-scale-1200 m-0 text-sm">{author.title}</span>
+                    <span className="text-scale-900 m-0 text-xs">{author.twitter}</span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
-      <div className="my-2"/>
+
+
+      <div className="my-2 mt-20" />
       {posts?.length ? (
         <div className="grid gap-10 sm:grid-cols-2">
           {posts.map((post, index) => (

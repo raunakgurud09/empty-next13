@@ -4,15 +4,15 @@ export default function Menu() {
   const val = false
   return (
     <>
-      <ul className="hidden md:flex space-x-3">
+      <ul className="hidden md:flex space-x-3 leading-snug font-medium">
         <a href="/#experience">
-          <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Experience</li>
+          <li className="opacity-60  hover:opacity-100 hover:text-cyan-600 hover:cursor-pointer">Experience</li>
         </a>
         <a href="/#projects">
           <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Projects</li>
         </a>
-        <a href="/#blog">
-          <li className="opacity-60 hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Blog</li>
+        <a href="/blog">
+          <li className="opacity-60  hover:opacity-100 hover:text-cyan-400 hover:cursor-pointer">Blog</li>
         </a>
       </ul>
       <div className="flex md:hidden">

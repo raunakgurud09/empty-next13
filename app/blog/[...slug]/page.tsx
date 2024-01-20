@@ -4,6 +4,8 @@ import { format, parseISO } from "date-fns";
 import { notFound } from "next/navigation"
 import { Mdx } from "@/components/mdx-components";
 import Link from "next/link";
+import "@/styles/mdx.css"
+
 import Image from "next/image"
 
 interface PostPageProps {
@@ -80,6 +82,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
             )}
           </div>
         ) : null}
+        
         <p className="text-sm">{format(parseISO(post.date), "LLLL d, yyyy")}</p>
       </div>
 

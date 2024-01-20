@@ -60,52 +60,11 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    // <header className="w-full flex justify-center">
-    //   <div className="w-full max-w-[1280px] md:px-4 py-2 flex justify-between">
 
-    <footer className="w-full mt-96 border-t border-t-white/20 dark:bg-black bg-white px-4 py-2 flex justify-between text-sm text-400">
-      <div className="container max-w-[1280px] mx-auto flex-row py-4 sm:flex justify-between">
-        <div className="flex flex-col justify-start ">
-          <Signature />
-          <p>&#169; {year} Raunak Gurud</p>
-          <div className="flex space-x-4 text-300 p-2 items-center">
-            {/* {socials.map((social) => (
-              <a
-                key={social.id}
-                href={social.url}
-                target="_blank"
-                rel="noreferrer"
-                className="w-4 hover:text-primary-500"
-                aria-label={social.name}
-              >
-                {social.icon}
-              </a>
-            ))} */}
-            <Socials />
-          </div>
-        </div>
-        <div className="flex-1"></div>
-        <div className="flex space-x-5">
-          {footer.map(({ heading, options }) => (
-            <div className="w-fit" key={heading}>
-              <h4 className="font-bold text-md py-[2px]">{heading}</h4>
-              <ul className="text-xs">
-                {options.map((option) => (
-                  <a
-                    href={option.url}
-                    key={option.name}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:opacity-100 opacity-70"
-                    aria-label={option.name}
-                  >
-                    <li className="py-[2px]">{option.name}</li>
-                  </a>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+    <footer className="w-full mt-96 mb-20 border-t border-t-primary px-4 py-2 flex justify-center items-center text-sm text-400">
+      <div className="max-w-[1360px] flex flex-col py-4 justify-center items-center">
+        <Socials />
+        <p>&#169; {year} Raunak Gurud</p>
       </div>
     </footer>
   )

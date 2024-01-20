@@ -8,8 +8,12 @@ export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
   return (
-    <div className="flex min-h-screen  flex-col">
-      <main className="flex-1 max-w-3xl mx-auto">{children}</main>
+    <div className="flex min-h-screen ">
+
+      <main className="max-w-[1360px] mx-auto ">
+        <h1 className="sr-only">raunak gurud blog</h1>
+        {children}
+      </main>
     </div>
   )
 }
