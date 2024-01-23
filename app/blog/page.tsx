@@ -1,14 +1,27 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Author, Post, allPosts } from "contentlayer/generated"
+import { allAuthors, allPosts } from "contentlayer/generated"
 import { compareDesc, format } from "date-fns"
 import "@/styles/mdx.css"
 
+interface PostPageProps {
+  params: {
+    slug: string[]
+  }
+}
 
 import { formatDate } from "@/lib/utils"
 
 export const metadata = {
   title: "Blog",
+}
+
+export async function generateStaticParams(): Promise<
+  PostPageProps["params"][]
+> {
+  return allPosts.map((post) => ({
+    slug: post?.slugAsParams.split("/"),
+  }))
 }
 
 export default async function BlogPage() {
@@ -19,6 +32,13 @@ export default async function BlogPage() {
     })
 
   const blog = posts[0]
+  const authors = blog.authors.map((author) => {
+    console.log(blog.authors)
+    const abc = allAuthors.find((author) => author.title === 'raunak')
+    console.log(abc)
+    return allAuthors.find(({ title }) => title === `${author}`)
+  })
+
 
 
   return (
@@ -49,28 +69,31 @@ export default async function BlogPage() {
           </div>
 
           <div className="grid w-max grid-flow-col grid-rows-4 gap-4 bg-blue-200">
-            {blog.authors.map((author: any) => {
+            {authors.map((author: any) => {
+              console.log(author)
               return (
-                <div className="flex items-center space-x-3" key={author._id}>
-                  {author.avatar && (
-                    <div className="relative h-10 w-10 overflow-auto">
-                      <Image
-                        src={author.avatar}
-                        alt={`${author.avatar} avatar`}
-                        className="rounded-full"
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                  )}
-                  <div className="flex flex-col">
-                    <span className="text-scale-1200 m-0 text-sm">{author.title}</span>
-                    <span className="text-scale-900 m-0 text-xs">{author.twitter}</span>
-                  </div>
-                </div>
+                null
+                // <div className="flex items-center space-x-3" key={author._id}>
+                //   {author && (
+                //     <div className="relative h-10 w-10 overflow-auto">
+                //       <Image
+                //         src={author.avatar}
+                //         alt={`${author.avatar} avatar`}
+                //         className="rounded-full"
+                //         layout="fill"
+                //         objectFit="cover"
+                //       />
+                //     </div>
+                //   )}
+                //   <div className="flex flex-col">
+                //     <span className="text-scale-1200 m-0 text-sm">{author.title}</span>
+                //     <span className="text-scale-900 m-0 text-xs">{author.twitter}</span>
+                //   </div>
+                // </div>
               )
             })}
           </div>
+
         </div>
       </div>
 

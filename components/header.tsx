@@ -1,10 +1,11 @@
-"use client"
+// "use client"
 
 import Signature from "./signature";
 import ThemeSwitch from "./themeSwitch";
 import Menu from "./menu";
 import ScrollProgress from "./ScrollProgress";
 export default function Header() {
+  
   return (
     <div className="sticky top-0 z-10">
       <header className="w-full flex justify-center border-b-[0.1px] border-white/10 bg-black/0 backdrop-blur">
@@ -20,7 +21,7 @@ export default function Header() {
           </div>
         </div>
       </header>
-      <ScrollProgress />
+      {/* <ScrollProgress /> */}
     </div>
   )
 }

@@ -1,3 +1,5 @@
+// "use client"
+
 import { allAuthors, allPosts } from "contentlayer/generated";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
@@ -6,7 +8,6 @@ import { Mdx } from "@/components/mdx-components";
 import Link from "next/link";
 import "@/styles/mdx.css"
 import Image from "next/image"
-import ScrollProgress from "@/components/ScrollProgress";
 
 interface PostPageProps {
   params: {
@@ -92,6 +93,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
       <article>
         <Mdx code={post.body.code} />
       </article>
+      
     </div>
   );
 };
