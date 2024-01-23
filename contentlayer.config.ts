@@ -30,6 +30,10 @@ const Post = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
+    readingTime: {
+      type: "number",
+      required: true,
+    },
     authors: {
       // Reference types are not embedded.
       // Until this is fixed, we can use a simple list.

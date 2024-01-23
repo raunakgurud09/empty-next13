@@ -7,8 +7,8 @@ import ScrollProgress from "./ScrollProgress";
 export default function Header() {
   
   return (
-    <div className="sticky top-0 z-10">
-      <header className="w-full flex justify-center border-b-[0.1px] border-white/10 bg-black/0 backdrop-blur">
+    <div className="sticky top-0 z-10 text-white/80">
+      <header className="w-full flex justify-center border-b-[0.1px] border-white/10 bg-black">
         <div className="w-full max-w-[1360px] px-4  flex justify-between">
           <div className="flex items-center justify-center">
             <Signature />

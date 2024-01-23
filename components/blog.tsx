@@ -48,7 +48,7 @@ function BlogCard({
   readingTime,
 }: Props) {
   return (
-    <div className="py-4  px-0  flex flex-col md:flex-row hover:scale-[1.02] transition-all rounded-md">
+    <div className="py-4  px-0  flex flex-col md:flex-row hover:scale-[1.02] transition-all rounded-md" key={_id}>
       <div className="w-full md:w-2/12 h-56 md:h-28 px-0 md:pr-1">
         {/* image */}
         <NextImage

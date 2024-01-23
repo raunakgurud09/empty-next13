@@ -1,12 +1,9 @@
-// "use client"
-
 import { allAuthors, allPosts } from "contentlayer/generated";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { format, parseISO } from "date-fns";
 import { notFound } from "next/navigation"
 import { Mdx } from "@/components/mdx-components";
 import Link from "next/link";
-import "@/styles/mdx.css"
 import Image from "next/image"
 
 interface PostPageProps {
@@ -29,7 +26,7 @@ async function getPostFromParams(params: any) {
 export async function generateStaticParams(): Promise<
   PostPageProps["params"][]
 > {
-  return allPosts.map((post) => ({    
+  return allPosts.map((post) => ({
     slug: post?.slugAsParams.split("/"),
   }))
 }
@@ -45,9 +42,9 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
     return allAuthors.find(({ slug }) => slug === `/authors/${author}`)
   })
 
+
   return (
     <div className="flex flex-col space-y-6 mt-10">
-      
       <div className="flex flex-col">
         {authors?.length > 0 ? (
           <div className="mt-4 flex space-x-4">
@@ -56,6 +53,7 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
                 <Link
                   key={author._id}
                   href={`https://twitter.com/${author.twitter}`}
+                  target="_blank"
                   className="flex items-center space-x-2 text-sm"
                 >
                   <Image
@@ -76,7 +74,6 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
             )}
           </div>
         ) : null}
-
         <p className="text-sm">{format(parseISO(post.date), "LLLL d, yyyy")}</p>
       </div>
       <Image
@@ -87,13 +84,12 @@ const PostLayout = async ({ params }: { params: { slug: string } }) => {
         className="w-full object-cover rounded-md"
       />
       <h1 className="text-5xl font-semibold ">{post.title}</h1>
-
+      
 
 
       <article>
         <Mdx code={post.body.code} />
       </article>
-      
     </div>
   );
 };

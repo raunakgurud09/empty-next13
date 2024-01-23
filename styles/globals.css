@@ -9,6 +9,8 @@
     --background-start-rgb: 214, 219, 220;
     --background-end-rgb: 255, 255, 255;
     --grid-color: 26, 24, 24, 0.033;
+    --border: 255, 255, 255, 0.2 ;
+
   }
 
   [data-theme="dark"] {
@@ -16,6 +18,8 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
     --grid-color: 255, 255, 255, 0.033;
+    --border: 255, 255, 255, 0.2;
+
   }
 }
 

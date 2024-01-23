@@ -61,7 +61,7 @@ export default function Footer() {
 
   return (
 
-    <footer className="w-full mt-96 mb-20 border-t border-t-primary px-4 py-2 flex justify-center items-center text-sm text-400">
+    <footer className="w-full mt-96 mb-20 border-t border-t-border px-4 py-2 flex justify-center items-center text-sm text-400">
       <div className="max-w-[1360px] flex flex-col py-4 justify-center items-center">
         <Socials />
         <p>&#169; {year} Raunak Gurud</p>
