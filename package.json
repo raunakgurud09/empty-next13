@@ -9,7 +9,7 @@
     "lint": "next lint",
     "preview": "next build && next start",
     "dev:contentlayer": "contentlayer dev",
-    "gen:hashnode": "ts-node scripts/gen-hashnode-data.js"
+    "gen:hashnode": "ts-node scripts/gen-hashnode-data.ts"
   },
   "dependencies": {
     "@types/node": "20.5.6",

@@ -17,7 +17,7 @@ export default function Header() {
           <div className="flex md:flex-row flex-row-reverse space-x-3  items-center justify-center">
             <Menu />
             <span className="h-[60%] border-none md:border  border-white/10 border-l-white/10 "></span>
-            <ThemeSwitch />
+            {/* <ThemeSwitch /> */}
           </div>
         </div>
       </header>

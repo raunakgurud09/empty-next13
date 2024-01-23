@@ -18,7 +18,7 @@ export function DropdownMenuCheckboxes() {
       <DropdownMenuTrigger asChild>
         <Menu />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-28 flex flex-col items-start justify-center">
+      <DropdownMenuContent className="w-28 flex flex-col items-start justify-center bg-black">
         <a href="/#experience" className="hover:cursor-pointer">
           <DropdownMenuCheckboxItem
           >

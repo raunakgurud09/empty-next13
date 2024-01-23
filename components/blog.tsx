@@ -1,6 +1,6 @@
 import NextImage from "next/image"
 import { format, parseISO } from "date-fns"
-import { posts } from "@/data/hashnode"
+import { TPost, posts } from "@/data/hashnode"
 
 
 export default function Blog() {
@@ -9,16 +9,16 @@ export default function Blog() {
       <h3 className="text-2xl font-bold px-4">Blog</h3>
       <div className="flex flex-col space-y-2">
         {
-          posts.map((post: any, i) => (
-            <div className="px-4" key={i}>
+          posts.map((post:TPost ) => (
+            <div className="px-4" key={post.id}>
               <BlogCard
-                _id={post._id}
+                id={post.id}
                 slug={post.slug}
                 title={post.title}
                 brief={post.brief}
                 coverImage={post.coverImage}
-                readingTime={post.readingTime.minutes}
-                dateAdded={post.dateAdded}
+                readTimeInMinutes={post.readTimeInMinutes}
+                publishedAt={post.publishedAt}
               />
             </div>
           ))
@@ -28,31 +28,22 @@ export default function Blog() {
   )
 }
 
-type Props = {
-  _id: string;
-  slug: string;
-  title: string;
-  brief: string;
-  coverImage: string;
-  dateAdded: string;
-  readingTime: number
-}
 
 function BlogCard({
-  _id,
+  id,
   slug,
   title,
   brief,
   coverImage,
-  dateAdded,
-  readingTime,
-}: Props) {
+  readTimeInMinutes,
+  publishedAt,
+}: TPost) {
   return (
-    <div className="py-4  px-0  flex flex-col md:flex-row hover:scale-[1.02] transition-all rounded-md" key={_id}>
+    <div className="py-4  px-0  flex flex-col md:flex-row hover:scale-[1.02] transition-all rounded-md" key={id}>
       <div className="w-full md:w-2/12 h-56 md:h-28 px-0 md:pr-1">
         {/* image */}
         <NextImage
-          src={coverImage}
+          src={coverImage?.url}
           alt={slug}
           width={144}
           height={256}
@@ -63,8 +54,8 @@ function BlogCard({
 
         <h4 className="text-lg font-semibold">{title}</h4>
         <div className="flex flex-row space-x-4">
-          <p className="text-sm font-light">{format(parseISO(dateAdded), "PPP")}</p>
-          <p className="text-sm font-light">{Math.floor(readingTime)} min read</p>
+          <p className="text-sm font-light">{format(parseISO(publishedAt), "PPP")}</p>
+          <p className="text-sm font-light">{Math.floor(readTimeInMinutes)} min read</p>
         </div>
         <p className="text-sm font-light mt-2 ">{brief}</p>
       </div>
