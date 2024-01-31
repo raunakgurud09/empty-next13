@@ -9,7 +9,7 @@ const HASHNODE_USERNAME = "raunakgurud2002";
 const main = async () => {
   const query = `
     query {
-      user(username:"raunakgurud2002" ) {
+      user(username:"levelupdevs" ) {
         posts(pageSize: 10, page: 1) {
           nodes {
             id

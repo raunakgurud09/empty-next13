@@ -87,15 +87,7 @@ interface FeatureBlogProps {
 const FeaturedBlog = ({ blog, authors }: FeatureBlogProps) => {
   return (
     <div className="grid grid-8 lg:grid-cols-2 lg:gap-16  my-1 md:my-6">
-      <div className="relative w-full aspect-[2/1] lg:aspect-[3/2] overflow-auto rounded-lg border-[0.1px] border-white/10">
-        <Image
-          src={(blog.image ? blog.image : blog.image)}
-          layout="fill"
-          objectFit="cover"
-          alt="blog thumbnail"
-          className="hover: "
-        />
-      </div>
+      
       <div className="flex h-min flex-col space-y-2 text-white/80">
 
         <div className="text-scale-900 flex space-x-2 text-sm">
@@ -119,6 +111,15 @@ const FeaturedBlog = ({ blog, authors }: FeatureBlogProps) => {
             )
           })}
         </div>
+      </div>
+      <div className="relative w-full aspect-[2/1] lg:aspect-[3/2] overflow-auto rounded-lg border-[0.1px] border-white/10">
+        <Image
+          src={(blog.image ? blog.image : blog.image)}
+          layout="fill"
+          objectFit="cover"
+          alt="blog thumbnail"
+          className="hover: "
+        />
       </div>
     </div>
   )
