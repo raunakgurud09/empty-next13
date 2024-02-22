@@ -2,7 +2,7 @@ export const projects = [
   {
     _id: 4,
     date: "Dec 2023 - ongoing",
-    name: "realtime.io",
+    name: "Realtime.io",
     live_website: "https://realtimeio.vercel.app",
     github: "https://github.com/raunakgurud09/realtime",
     brief:
@@ -19,7 +19,7 @@ export const projects = [
     _id: 5,
     date: "Jan 2024 - Jan 2024",
     name: "Hashnode publish",
-    live_website: "https://github.com/raunakgurud09/hashnode-publish",
+    // live_website: "https://github.com/raunakgurud09/hashnode-publish",
     github: "https://github.com/raunakgurud09/hashnode-publish",
     brief:
       "This enables your workflow to seamlessly publish your Markdown file to Hashnode upon each push event. The only requirement is your authentication key, and the workflow ensures that a blog post is automatically published on push. This mechanism serves as a reliable backup and is designed for user-friendly functionality.",
@@ -34,7 +34,7 @@ export const projects = [
   {
     _id: 1,
     date: "Jun 2022 - Aug 2023",
-    name: "shop",
+    name: "Shop",
     live_website: "shop.project.raunakgurud.com",
     github: "https://github.com/raunakgurud09/SHOP-ecommerce",
     brief:

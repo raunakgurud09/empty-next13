@@ -1,0 +1,125 @@
+---
+title: "Mastering scale of websockets"
+description: "Scaling strategies for creating reliable robust chat-applications using Redis and kafka"
+image: "/images/blog/ws2/background_image.png"
+readingTime: 13
+date: 2024-01-24
+authors:
+  - raunak
+  - dummy
+---
+
+
+## Intro
+
+Hey there! 🌟 Ready to dive into the exciting world of real-time communication with WebSocket? 🚀 Join me in this series where we'll start from the basics, craft awesome chat/video apps, and master scaling with Redis and Kafka. Get set for a journey filled with interactive learning! 🌐💬✨ #RealTimeWeb #WebSocketAdventures
+
+In the [last blog](https://raunakgurud.hashnode.dev/websockets-unlocked-mastering-the-art-of-real-time-communication), we discussed about what are web-sockets It also covers the difference between http and web-sockets, as well as the benefits of using web-sockets. By implementing a chat-application using Next.JS, Node.Js and express.
+
+In this blog, we will delve into the process of scaling a web-socket server, as well as the challenges that arise during this scaling process. We will also explore various strategies to overcome these challenges.
+
+## Problem with current architecture
+
+Now, let's consider a scenario where you have developed an impressive chat application and are witnessing an increasing number of users utilizing your chat service. As a result, you desire to scale your application in order to accommodate hundreds or even thousands of concurrent chat users.
+
+![single-server](/images/blog/ws2/single-server.png)
+
+The system's requirement are reliability and low latency for scaling But the current architecture is not scalable beyond few hundred users as it puts a lot of load on a single server which is a single point of failure
+
+So to address the inability of the current server to handle concurrent requests. We have two choices to choose from for scaling -
+
+1. **Horizontal scaling** involves enhancing the capacity of a computer's resources, such as RAM and CPU, in order to accommodate a larger user base.
+    
+
+However, it's important to note that there are certain limitations to horizontal scaling. If the application faces a sudden increase in user activity, there is a higher risk of system crashes. This occurs due to the restricted resources (CPU, RAM, Sockets) within the current architecture, which creates a bottleneck and imposes restrictions on the number of users it can support.
+
+1. **Vertical scaling** involves adding more parallel servers to distribute the workload among them.
+    
+
+This look like a better option to choose as we only need to increase number of servers when the request increases The best way to handle more request is to increase the number of servers and adding load balancer in front for distribution of requests Using this we can handle increased request without any worries about single point of failure.
+
+![multi-server-1](/images/blog/ws2/multi-server-1.png)
+
+However, there are certain challenges that may arise when adopting this approach in terms of establishing socket connections. This is primarily due to the stateful nature of web-socket connections, which may not be feasible to maintain across different servers.
+
+## Issue about socket scale
+
+This architecture has a major drawback. If chat users are connected to different servers, they won't be able to chat in real time. As a socket connection is stateful and only uses connected to the same server would be able to communicate in real-time
+
+To resolve this issue, we can implement a solution where chat users are assigned to the same server. However, this approach may introduce additional complexity, such as considering user location. Although it could be effective for small-scale operations, it may place excessive strain on certain servers as the number of users increases, potentially under utilizing available servers.
+
+![multi-server-2](/images/blog/ws2/multi-server-2.png)
+
+There can also be issue when we would have a group chat and the users are from different regions
+
+In the given fig as you can see there are 3 clients all three are in the same group chat but different regions. The client 1 and 2 can chat in real time as they are connected to the same server but the client3 would not receive any messages in real-time.
+
+## How to solve the issue
+
+After careful analysis, it becomes abundantly clear that the central challenge we're currently facing revolves around the seamless sharing of data among servers. To address this matter in a decisive manner, it is highly advisable to adopt and incorporate a pub/sub architecture as the recommended solution.
+
+The key advantage of opting for a pub/sub architecture lies in its ability to enhance scalability and flexibility. Allowing servers to operate independently, leading to improved performance and resilience.
+
+**Publisher-Subscriber architecture** is a messaging pattern used in software design and communication systems. It is a way of designing distributed systems where components communicate with each other without direct dependencies. In this architecture, there are two main components: publishers, subscribers.
+
+1. Publisher: The publisher is responsible for producing messages. It generates and sends messages to a specific topic or channel without any knowledge of who might be interested in those messages.
+    
+2. Subscriber: Subscribers express an interest in receiving messages on a specific topic or channel. They subscribe to the topics they are interested in and receive relevant messages without needing to know who the publishers are.
+    
+
+By implementing a pub/sub architecture, we can effectively overcome the obstacles hindering efficient data sharing. This approach of well-structured framework facilitates smooth communication and enables seamless data transmission between
+
+Also in the event of a server or network failure, the system can automatically reroute messages or events through alternate paths, ensuring data remains accessible and uninterrupted.
+
+By using this we can solve our problem of communication between servers
+
+![solution-arch-0](/images/blog/ws2/solution-arch-0.png)
+
+In this architectural setup, every server would function as a publisher and subscriber concurrently. This means that each server would have the capability to send and receive messages on designated topics or channels.
+
+Upon receiving a message from the client, a server would promptly publish it on a specific topic \[message\]. Subsequently, all other server which would be subscribed to the same topic would then obtain the message from the Redis server instantaneously with redis.
+
+The Redis server plays a crucial role in this architecture, as it utilizes in-memory data storage, enabling efficient I/O operations. This characteristic grants the system exceptionally fast response times, approaching real-time performance.
+
+Leveraging this architectural design, it becomes possible to scale our application extensively and handle thousands of users concurrently.
+
+## Database issue
+
+We would additionally require the capability to store messages in a database, taking into consideration the continuous influx of data from chat applications. The application generate a significant volume of messages concurrently, with an approximate rate of 100 messages per second from several hundred users.
+
+But, the process of writing data into the database is time-consuming, as the database is primarily optimized for effective query and indexing operations rather than high throughput.
+
+Consequently, this situation can potentially lead to a problem due to high volume of data incoming the DB can fail. If the database experiences a failure, all the data generated will be lost until a new database is established. It is important to note that this particular circumstance represents a single point of failure.
+
+![solution-arch-1](/images/blog/ws2/solution-arch-1.png)
+
+After careful analysis, it becomes abundantly clear that we need a system which can contain all the messages and only write to database when the DB is up and on a safe speed. It should have high-throughput to consume messages at high speed without any issues. It is highly advisable to adopt and incorporate a message-broker such as **kafka** as recommended solution.
+
+Apache Kafka is an open-source distributed event streaming platform that is designed for high-throughput, fault-tolerant, and scalable data streaming. It is widely used in scenario like real-time analytics. Its flexibility and scalability make it a popular choice for building event-driven architectures and streaming data applications.
+
+Kafka can be used as a messaging backbone to handle the communication between different components by providing -
+
+1. High Throughput: Kafka's architecture is designed for high throughput. It allows for the parallel processing of messages across multiple partitions and broker nodes, ensuring efficient handling of large message volumes.
+    
+2. Database Writes: Consumers can be designed to read messages from the Kafka topic and write them to the database. Batch processing or other optimization techniques can be applied to ensure a safe and efficient speed of database writes.
+    
+3. Asynchronous Communication: Kafka enables asynchronous communication between the chat application servers and the database, decoupling the two components and allowing for improved system responsiveness.
+    
+4. Fault Tolerance: Kafka's replication mechanisms provide fault tolerance, ensuring that messages are not lost in the event of server failures.
+    
+5. Real-time Processing: Kafka allows for real-time processing of messages, enabling near-instantaneous delivery of chat messages.
+    
+
+![solution-arch-2](/images/blog/ws2/solution-arch-2.png)
+
+When user request increases all the servers are sending messages at very thigh speed to kafka topic \[messages\]. Kafka is specifically designed to handle high-throughput scenarios making it well-suited for situations where a significant volume of data needs to be processed in real-time.
+
+By utilizing Kafka, we can efficiently consume all the messages and ensure that they are only written to the database when it is up and running. This effectively eliminates any potential points of failure in the system.
+
+Now in the current architecture, you have leverage its strengths in handling high-throughput, reliable messaging, and scalability to create a robust and efficient system for writing chat messages to the database.
+
+🚀 If you had a blast exploring WebSockets scaling chat app, you're in for a treat! 🌟 This is just the beginning of your journey into real-time communication. Stay tuned for the next blog where we'll explore the implementation of this architecture using Redis and kafka.
+
+Don't forget to share this blog with your tech-savvy pals! Together, we're coding our way to greatness. 🚀💻
+
+Follow @[Raunak Gurud](@raunakgurud2002) ✨for more such web development realted content

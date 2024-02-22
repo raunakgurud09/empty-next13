@@ -1,0 +1,122 @@
+---
+title: "Will Bun replace Node ???"
+description: "In the world of software, Git mastery is key. Our blog offers insights and tips for effective version control. Learn to manage commits, optimize workflows, and collaborate seamlessly. Whether you're a beginner or seasoned pro, join us to level up your development game!"
+image: "/images/blog/bun/thumbnail.avif"
+readingTime: 5
+date: 2023-09-11
+authors:
+  - raunak
+  - dummy
+---
+
+
+
+## **What is Bun?**
+
+Bun is a new runtime that provides an all-in-one toolkit for JavaScript and TypeScript apps. It ships as a single executable called Bun, making your app run really fast.
+
+## **How Does Bun Do It?**
+
+Unlike other runtimes, such as Node or Deno, which use the heavy and slow Chromium V8 engine developed by Google, Bun uses a different engine called JavaScriptCore, developed by Apple. This engine is written in Zig, which makes Bun a fast runtime.
+
+# **What does bun do**
+
+Bun takes care of developer experience and performance through its feature
+
+## **Features that will be useful.**
+
+### **Developer experience**
+
+Bun is committed to providing an unparalleled developer experience. We pride ourselves on offering intuitive and easy-to-use APIs that help streamline the development process. In addition to our existing APIs.
+
+Let's try building an API server in Bun.
+
+```bash
+    # install bun
+    # https://bun.sh/docs/installation
+```
+
+```bash
+    # check bun is working
+    bun -h
+```
+
+```bash
+    mkdir bun
+    cd bun
+```
+
+```bash
+    bun init
+```
+
+write on index.ts file
+
+![bun-server](/images/blog/bun/bun-server.avif)
+
+no need to install nodemon ts-node and other development packages it just works
+
+![run](/images/blog/bun/run.avif)
+
+![curl](/images/blog/bun/curl.avif)
+
+### **Import require**
+
+The transition from CommonJS to ES modules has been slow and full of terrors. After ESM was introduced, Node.js took 5 years before supporting it without an `--experimental-modules` flag. Regardless, the ecosystem is still full of CommonJS.
+
+Bun supports both module systems, all the time. No need to worry about file extensions, `.js` vs `.cjs` vs `.mjs`, or including `"type": "module"` in your `package.json`.
+
+You can even use `import` and `require()`, *in the same file.* It just works.
+
+```jsx
+    import lodash from "lodash";
+    const _ = require("underscore");
+```
+
+### **Quick setup**
+
+Whenever I begin working on a new project, I need to install `nodemon`, set up `tsconfig`, `jest`, `"webpack"`, and many other dependencies. But you don't have to worry about that anymore!
+
+Just type the following:
+
+```bash
+    bun init
+```
+
+It works like magic
+
+**Bundlers**
+
+**Testing libraries**
+
+**Transpilers**
+
+`nodemon` — Bun has a built-in watch mode!
+
+`dotenv`, `cross-env` — Bun reads `.env` files by default
+
+### **It is fast**
+
+Bun is a fast framework, starting up to 4x [**faster**](https://twitter.com/jarredsumner/status/1499225725492076544) than Node.js. This speed difference is even more pronounced when running a TypeScript file, which needs to be transpired before it can be run by Node.js.
+
+![fast-1](/images/blog/bun/fast-1.avif)
+
+Bun is orders of magnitude faster than `npm`, `yarn`, and `pnpm`. It uses a global module cache to avoid redundant downloads from the npm registry and uses the fastest system calls available on each operating system.
+
+![fast-2](/images/blog/bun/fast-2.avif)
+
+# **Problems**
+
+I am currently unable to come up with any problems.
+
+## **Will bun will be replaced**
+
+In my opinion, it's not a matter of **will** but rather **when** to start using Bun. Even if it may not be as performant as they tested, I would use Bun for the developer experience itself. It can save a lot of time for setup and ensuring everything works properly.
+
+References
+
+* [https://bun.sh/blog/bun-v1.0](https://bun.sh/blog/bun-v1.0)
+    
+* [https://www.youtube.com/watch?v=BsnCpESUEqM](https://www.youtube.com/watch?v=BsnCpESUEqM)
+    
+* [https://www.youtube.com/watch?v=dWqNgzZwVJQ](https://www.youtube.com/watch?v=dWqNgzZwVJQ)

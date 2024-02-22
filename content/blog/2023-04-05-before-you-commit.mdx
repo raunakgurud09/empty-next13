@@ -1,0 +1,90 @@
+---
+title: "Before you Commit -m "
+description: "In the world of software, Git mastery is key. Our blog offers insights and tips for effective version control. Learn to manage commits, optimize workflows, and collaborate seamlessly. Whether you're a beginner or seasoned pro, join us to level up your development game!"
+image: "/images/blog/mistakes/thumbnail.avif"
+readingTime: 5
+date: 2023-04-05
+authors:
+  - raunak
+  - dummy
+---
+
+
+
+When you're making changes to your personal or open-source projects, it's crucial to remember some important points before committing, especially when working in a team. Poorly managed commits can quickly cause chaos. That's why this blog is dedicated to helping you master Git, providing valuable insights and practical tips to help you manage your .git effectively and commit with confidence. if you're new to Git, this blog will guide you toward optimizing your workflow and elevating your Git game. So keep reading to discover how you can take your development to the next level!
+
+### learning git
+
+If you're interested in a tech job, the best advice anyone can give you is -
+
+> Get good at git
+
+Mastering Git may not be an absolute necessity, but it is important to have a fundamental understanding of its commands as it can aid your professional growth. Knowing basic commands like add, commit, branch, checkout, push, and merge is essential.
+
+[Learn complete Git and GitHub](https://www.youtube.com/watch?v=apGV9Kg7ics) - by [Kunal Kushwaha](https://twitter.com/kunalstwt)
+
+### [G](https://twitter.com/kunalstwt)it Messages
+
+Do you find yourself constantly struggling to write effective commit messages and resorting to vague ones like "commit 1," "commit 2," and so on? This is a problematic approach since, when you later review your code, the commits lose their meaning and you won't be able to differentiate one from another. It's crucial to craft clear and descriptive commit messages that accurately capture the changes you've made to your code. That way, you can easily track the progression of your work and pinpoint specific alterations whenever necessary.
+
+Git messages are an essential aspect of version control. By following well-established rules and guidelines, you can ensure that your messages conform to a common pattern that others can easily learn and understand. It is crucial to master this skill as it is fundamental to collaboration and maintaining a clear and organized codebase.
+
+Following the rules would make you commit more cleanly and up to the point To improve the quality of your commit messages and follow best practices, you can utilize tools like Commitlint.
+
+You can follow in detailed blog to understand more about [How to write Good Commit Messages](https://www.freecodecamp.org/news/how-to-use-commitlint-to-write-good-commit-messages/)
+
+### Linting
+
+Linting is a process used in software development to detect and fix coding errors and potential bugs. The term "linting" may refer to various types of automated tools that check source code for common mistakes, such as syntax errors, unused variables, and inconsistent formatting. Linting can improve code quality, readability, and maintainability by catching errors early in the development process before they cause problems in production. In summary, linting is a valuable technique for ensuring high-quality code that meets industry standards and best practices.
+
+If you are a javascript developer you have a plethora of options in linting tools such as jslint, jshint, and eslint. However, I highly recommend using the most widely used tool, eslint.
+
+To get started, check out this fantastic blog on incorporating eslint into your projects. [Adding ESlint to your projects](https://medium.com/dailyjs/adding-eslint-to-your-project-7bd4feca35a8)
+
+### Prettier
+
+Prettier is a code formatter for JavaScript and many other programming languages. It helps to automatically format your code in a consistent and readable way, without having to manually adjust indentation, line breaks, and other formatting details.
+
+![Prettier](/images/blog/mistakes/prettier.gif)
+
+To use Prettier in JavaScript, you can install it as a development dependency in your project with npm or yarn
+
+```javascript
+npm install --save-dev prettier
+```
+
+We use Prettier to ensure that our code follows a consistent and predictable style. Prettier is a code formatter that automatically analyzes your code and applies a set of rules to format it in a standard way, regardless of the original formatting or style.
+
+If you are using a code editor like VS Code, you can conveniently download an extension to automatically format your code. In addition, it is crucial to ensure that both you and your team make use of the same settings in "prettier." This can be achieved by utilizing the .prettierrc file.
+
+### Husky
+
+Ensuring code quality is very important for a maintainable and scalable application. But how can we enforce these quality standards?
+
+Well, with JavaScript, you can use ESLint to define coding conventions and use Prettier for consistent code formatting. If you have these two configured, the first step is complete. Now that we have standards in place, how do we enforce them? This is where Husky comes to play. Husky is used to enforcing standards in Git-based projects.
+
+[learn how to use husky to avoid your mistakes.](https://www.freecodecamp.org/news/how-to-add-commit-hooks-to-git-with-husky-to-automate-code-tasks/)
+
+### .env
+
+\## Don't commit your API keys
+
+Using a .env file has several advantages over hardcoding configuration variables directly into your code. Firstly, it enhances the security of your application by preventing sensitive information from being exposed in your codebase. Secondly, it makes it easier to manage different environments (such as development, testing, and production) since each environment can have its own set of configuration variables in the .env file. Finally, it improves the maintainability and scalability of your application by allowing you to easily modify configuration variables without having to modify your code.
+
+```javascript
+const MY_API_KEY="nlffkn2r239n23kjn32";
+const MY_API_SECRET="3nl2j$90v2on09vnl2kj1";
+```
+
+This is very bad practice, use something like dotenv where you can define your secrets and also make sure that you don't accidentally push your .env file
+
+```javascript
+const MY_API_KEY=process.env.API_KEY
+const MY_API_SECRET=process.env.API_SECRET
+```
+
+Hardcoding your API key is like leaving your front door open and a sign that says "Free stuff inside!" It may seem convenient at first, but it's just asking for trouble. It's like giving a stranger your credit card and telling them to buy whatever they want. So, if you don't want to end up with a giant bill and a lot of regrets, make sure to keep your API key safe and secure!
+
+## Summary
+
+This blog post provides tips and best practices for managing Git effectively and committing with confidence. The key takeaways include mastering basic Git commands, writing clear and descriptive commit messages, utilizing linting tools like ESLint to improve code quality, using code formatter Prettier to ensure consistent and readable code formatting, using Husky to enforce coding standards, and using a .env file to store sensitive configuration variables. By following these guidelines, developers can optimize their workflow and elevate their Git game, leading to more organized and maintainable codebases.
