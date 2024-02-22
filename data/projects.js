@@ -1,8 +1,40 @@
 export const projects = [
   {
+    _id: 4,
+    date: "Dec 2023 - ongoing",
+    name: "realtime.io",
+    live_website: "https://realtimeio.vercel.app",
+    github: "https://github.com/raunakgurud09/realtime",
+    brief:
+      "A web application built with Node.js, react.js, and Socket.IO, WebRTC. The application demonstrates the integration of these technologies to create a real-time web application. The scope of this application to to go beyond basic application and implement websocket connection for scale using redis and kafka",
+    image: "",
+    skills: [
+      {
+        values: "",
+        icon: "",
+      },
+    ],
+  },
+  {
+    _id: 5,
+    date: "Jan 2024 - Jan 2024",
+    name: "Hashnode publish",
+    live_website: "https://github.com/raunakgurud09/hashnode-publish",
+    github: "https://github.com/raunakgurud09/hashnode-publish",
+    brief:
+      "This enables your workflow to seamlessly publish your Markdown file to Hashnode upon each push event. The only requirement is your authentication key, and the workflow ensures that a blog post is automatically published on push. This mechanism serves as a reliable backup and is designed for user-friendly functionality.",
+    image: "",
+    skills: [
+      {
+        values: "",
+        icon: "",
+      },
+    ],
+  },
+  {
     _id: 1,
     date: "Jun 2022 - Aug 2023",
-    name: "SHOP-ecommerce",
+    name: "shop",
     live_website: "shop.project.raunakgurud.com",
     github: "https://github.com/raunakgurud09/SHOP-ecommerce",
     brief:
