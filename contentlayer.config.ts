@@ -18,6 +18,11 @@ const Post = defineDocumentType(() => ({
     description: {
       type: "string",
     },
+    tags: {
+      type: "string",
+      required: true,
+      default:"blog,"
+    },
     date: {
       type: "date",
       required: true,

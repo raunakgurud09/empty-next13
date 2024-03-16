@@ -36,7 +36,7 @@ export const CursorContainer = ({ children }: React.PropsWithChildren) => {
   return (
     <motion.div ref={containerRef} className={cn('relative')}>
       <motion.div
-        className='bg-white pointer-events-none absolute z-[100] aspect-square w-4 -translate-x-1/2 -translate-y-1/2 rounded-lg mix-blend-difference'
+        className='bg-white pointer-events-none absolute z-[100] aspect-square w-3 -translate-x-1/2 -translate-y-1/2 rounded-lg mix-blend-difference'
         animate={{
           left: mousePosition.x,
           top: mousePosition.y,
