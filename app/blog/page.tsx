@@ -17,9 +17,6 @@ import AuthorCard from "@/components/blog/AuthorCard"
 import { useCallback, useEffect, useState } from "react"
 import { Search } from "lucide-react"
 
-export const metadata = {
-  title: "Blog",
-}
 
 export function generateStaticParams() {
   return allPosts.map((post) => {
@@ -98,7 +95,7 @@ export default function BlogPage({ params }: PostPageProps) {
             placeholder="Search blog"
             value={searchKey}
             onChange={handleSearchChange}
-            className="w-[300px] pl-8 px-1 py-1 rounded-md border-0 outline outline-[0px] focus:ring-0"
+            className="w-[300px] pl-8 px-1 py-1 rounded-md border border-white/30 outline outline-[0px] focus:ring-0 bg-transparent"
           />
         </div>
       </div>
