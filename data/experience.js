@@ -29,7 +29,7 @@ export const experiences = [
   {
     _id: "3",
     date: "Apr 2021 - Sept 2021",
-    position: "developer",
+    position: "Developer intern",
     proof_of_work: "https://www.entrespace.in",
     place_of_work: "Entrespace",
     brief:
