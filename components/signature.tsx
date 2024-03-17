@@ -2,7 +2,7 @@
 export default function Signature() {
   return (
     <>
-      <div className="flex items-center">
+      <div className="flex items-center mr-2">
         <span className="z-10 font-serif text-4xl font-bold text-primary-700 text-primary">
           R
         </span>

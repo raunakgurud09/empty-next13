@@ -10,6 +10,7 @@
     --background-end-rgb: 0, 0, 0;
     --grid-color: 255, 255, 255, 0.033;
     --border: 255, 255, 255, 0.2;
+    --primary: 346.8 77.2% 49.8%;
   }
 
   [data-theme="dark"] {
@@ -18,6 +19,7 @@
     --background-end-rgb: 0, 0, 0;
     --grid-color: 255, 255, 255, 0.033;
     --border: 255, 255, 255, 0.2;
+    --primary: 346.8 77.2% 49.8%;
   }
 }
 

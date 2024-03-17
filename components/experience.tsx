@@ -1,11 +1,12 @@
 import { Link } from "lucide-react"
 import { experiences } from "@/data/experience.js"
+import UnderlineLink from "./links/UnderlineLink";
 
 
 export default function Experience() {
   return (
     <section id="experience" className="flex flex-col w-full mx-auto space-y-4 drop-shadow-2xl">
-      <h3 className="font-bold text-2xl px-4">Experience</h3>
+      <h3 className="font-bold text-2xl px-4"> <UnderlineLink href='/#experience'>Experience</UnderlineLink></h3>
       <div className="flex flex-col space-y-2">
         {
           experiences.map((exp, i) => (

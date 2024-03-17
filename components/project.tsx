@@ -9,6 +9,9 @@ import { AiFillGithub } from "react-icons/ai"
 
 import { projects } from "@/data/projects.js"
 import UnstyledLink from "./links/UnstyledLink"
+import UnderlineLink from "./links/UnderlineLink"
+import { motion } from "framer-motion"
+import { FRAMER_MOTION_UP_LATE } from "@/lib/framer"
 
 const skills = [
   {
@@ -57,7 +60,7 @@ const skills = [
 
 export default function Project() {
 
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(true)
 
 
   return (
@@ -210,16 +213,17 @@ export const GridProjectCard = ({
   return (
     <UnstyledLink
       href={github}
-      className='relative group p-2 focus-visible:rounded-2xl  '
+      className='relative group p-2 focus-visible:rounded-2xl'
       trackEventTag={`Project Card - ${name}`}
     >
-      <div className='absolute inset-0 z-10 aspect-video  rounded-xl group-hover:bg-black/80 flex items-end'>
+      <motion.div
+        className='absolute inset-0 z-10 aspect-video rounded-xl group-hover:bg-black/80 flex items-end'>
         <p className='p-3  mt-1 text-xs opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100'>
           {brief}
         </p>
-      </div>
+      </motion.div>
 
-      <div className='aspect-video overflow-hidden rounded-xl'>
+      <div className='aspect-video overflow-hidden rounded-xl border-[1px] border-white/10'>
         <Image
           className='h-full w-full object-cover transition-all group-hover:scale-110 '
           width={1000}
@@ -229,7 +233,7 @@ export const GridProjectCard = ({
         />
       </div>
 
-      <p className='h4 after:bg-light after:dark:bg-primary relative mt-2 max-w-max font-normal after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full'>
+      <p className='group-hover:animated-underline group-hover:custom-link border-b border-dotted hover:border-white/10 inline-flex items-center font-medium h4 after:bg-light after:dark:bg-primary relative mt-2 max-w-max after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full'>
         {name}
       </p>
 
