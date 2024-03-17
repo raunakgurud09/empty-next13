@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import SkillCard from "./skillCard"
+import SkillCard, { SkillTag } from "./skillCard"
 import { AlignJustify, Atom, BookPlus, Boxes, Cat, Clapperboard, ContainerIcon, LayoutGrid, Link, Pencil, Plus, Wind } from "lucide-react"
 import { useState } from "react"
 import More from "./more"
@@ -10,6 +10,7 @@ import { AiFillGithub } from "react-icons/ai"
 import { projects } from "@/data/projects.js"
 import UnstyledLink from "./links/UnstyledLink"
 import { motion } from "framer-motion"
+import UnderlineLink from "./links/UnderlineLink"
 
 const skills = [
   {
@@ -98,7 +99,7 @@ export default function Project() {
             </div>
           )
           : (
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-4">
               {
                 projects.map(
                   (proj) => {
@@ -112,6 +113,7 @@ export default function Project() {
                         github={proj.github}
                         image={proj.image}
                         brief={proj.brief}
+                        skills={proj.skills}
                       />
                     )
                   }
@@ -121,10 +123,6 @@ export default function Project() {
 
           )
       }
-
-
-
-
 
     </section >
   )
@@ -138,10 +136,7 @@ type Props = {
   github: string;
   brief: string;
   image: string;
-  skills?: {
-    name?: string;
-    icon?: string;
-  }[];
+  skills: string[];
 }
 
 function ProjectCard({
@@ -152,52 +147,45 @@ function ProjectCard({
   github,
   brief,
   image,
+  skills
 }: Props) {
-  const [show, setShow] = useState(false)
 
   return (
-    <div key={_id} className="flex flex-col md:flex-row px-4">
+    <UnstyledLink
+      href={live_website ?? github}
+      key={_id}
+      className="flex flex-col md:flex-row px-4 group">
       <div className="w-full md:w-2/12 flex flex-col-reverse md:flex-col">
-        <p className="text-xs mt-1 mb-2" >{date}</p>
-        <div className="w-full flex justify-start md:justify-end items-center">
-          {/* <NextImage
-            src={brief}
-            alt="logo"
-            width={30}
-            height={30}
-            className="m-1"
-          /> */}
-        </div>
+        <p className="text-xs my-1" >{date}</p>
       </div>
       <div className="w-full md:ml-2 md:w-10/12">
-        <h4 className="text-lg font-semibold">{name}</h4>
-        <div className="flex space-x-2 my-2">
+        <h4 className="text-lg font-semibold h4 after:bg-primary  relative max-w-max after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full">
+          <UnderlineLink href={live_website ?? github} className="group-hover:border-b">
+            {name}
+          </UnderlineLink>
+        </h4>
+
+        {/* <div className="flex space-x-2 my-2">
           {live_website && <a href={live_website} target="_black"><Link size={20} /></a>}
           {github && <a href={github} target="_black"><AiFillGithub size={20} /></a>}
-        </div>
+        </div>*/}
+        
         <p className="text-sm font-light">{brief}</p>
-        <div className="flex flex-wrap my-1">
+        <div className="flex flex-wrap my-1 gap-2">
           {
-            show ? skills.map((skill, i) => {
+            skills.map((skill, i) => {
               return (
-                <SkillCard skill={skill} key={i} />
-              )
-            }) : skills.slice(0, 4).map((skill, i) => {
-              return (
-                <>
-                  <SkillCard skill={skill} key={i} />
-                </>
+                <SkillTag name={skill} key={i} />
               )
             })
           }
-          {<div onClick={() => setShow(!show)}>
-            <More state={!show} />
-          </div>}
         </div>
       </div>
-    </div>
+    </UnstyledLink>
   )
 }
+
+type GridProjectCardProps = Omit<Props, "skills">
 
 export const GridProjectCard = ({
   _id,
@@ -207,12 +195,12 @@ export const GridProjectCard = ({
   github,
   brief,
   image,
-}: Props) => {
+}: GridProjectCardProps) => {
   return (
-    <div 
-      // href={github}
+    <UnstyledLink
+      href={github}
       className='relative group p-2 focus-visible:rounded-2xl'
-      // trackEventTag={`Project Card - ${name}`}
+    // trackEventTag={`Project Card - ${name}`}
     >
       <div
         className='absolute inset-0 z-10 aspect-video rounded-xl group-hover:bg-black/80 flex items-end'>
@@ -231,10 +219,10 @@ export const GridProjectCard = ({
         />
       </div>
 
-      <p className='animated-underline custom-link group-hover:border-b border-dotted hover:border-white/10 inline-flex items-center font-medium h4 after:bg-light after:dark:bg-primary relative mt-2 max-w-max after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full'>
+      <p className='items-center font-medium h4 after:bg-light after:dark:bg-primary relative mt-2 max-w-max after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full'>
         {name}
       </p>
 
-    </div>
+    </UnstyledLink>
   )
 }

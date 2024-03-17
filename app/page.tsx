@@ -1,3 +1,4 @@
+import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { CursorContainer } from "@/components/animation/cursor-container";
 import Blog from "@/components/blog";
@@ -10,6 +11,7 @@ export default function Home() {
     <CursorContainer>
       <main className="flex flex-col w-full md:w-[768px] mx-auto space-y-20 text-white/80 pb-96">
         <Main />
+        <About />
         <Experience />
         <Project />
         <Blog />

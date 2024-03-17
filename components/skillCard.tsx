@@ -15,3 +15,11 @@ export default function SkillCard({ skill }: Props) {
     </div>
   )
 }
+
+export const SkillTag = ({ name }: { name: string }) => {
+  return (
+    <div className="flex px-3 py-1 space-x-2 opacity-90 bg-blue-400/20 rounded-full items-center">
+      <p className='text-xs text-blue-400'>{name}</p>
+    </div>
+  )
+}

@@ -9,7 +9,7 @@ export const Contact = () => {
       <h3 className="text-2xl font-bold">Contact</h3>
 
       <div className="flex justify-between items-center">
-        <Link href={"mailto:raunakgurud2121@gmail.com"} className="w-1/2 p-3 flex flex-col items-start justify-end h-40 border-[1px] border-white/20 rounded-xl hover:bg-white/20 hover:text-white">
+        <Link href={"mailto:raunakgurud2121@gmail.com"} className="w-1/2 p-3 flex flex-col items-start justify-end h-40 border-[1px] border-white/20 rounded-xl hover:scale-[1.02] hover:text-white">
           <h2 className="text-4xl font-semibold">Need a developer?</h2>
           <p className="font-thin">Looking for help or hiring shoot a mail at raunakgurud2121@gmail.com</p>
         </Link>
