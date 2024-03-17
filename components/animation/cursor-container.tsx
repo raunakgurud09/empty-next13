@@ -36,13 +36,22 @@ export const CursorContainer = ({ children }: React.PropsWithChildren) => {
   return (
     <motion.div ref={containerRef} className={cn('relative')}>
       <motion.div
-        className='bg-white pointer-events-none absolute z-[100] aspect-square w-3 -translate-x-1/2 -translate-y-1/2 rounded-lg mix-blend-difference'
+        className='bg-white rounded-full pointer-events-none absolute z-[100] aspect-square w-2 -translate-x-1/2 -translate-y-1/2  mix-blend-difference'
         animate={{
           left: mousePosition.x,
           top: mousePosition.y,
           display: isTouchScreen ? 'none' : 'block',
         }}
-        transition={{ type: 'tween', ease: 'backOut', duration: 0.1 }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.2 }}
+      ></motion.div>
+      <motion.div
+        className='p-2 border-[1px] border-white/20 bg-transparent rounded-full pointer-events-none absolute z-[100] aspect-square w-10 -translate-x-1/2 -translate-y-1/2  mix-blend-difference'
+        animate={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          display: isTouchScreen ? 'none' : 'block',
+        }}
+        transition={{ type: 'tween', ease: 'backOut', duration: 0.3 }}
       ></motion.div>
       {children}
     </motion.div>

@@ -1,6 +1,7 @@
 import { Link } from "lucide-react"
 import { experiences } from "@/data/experience.js"
 import UnderlineLink from "./links/UnderlineLink";
+import { SkillTag } from "./skillCard";
 
 
 export default function Experience() {
@@ -64,12 +65,10 @@ function ExperienceCard(
         <p className="text-sm font-light">
           {brief}
         </p>
-        <div className="flex flex-row mt-2">
+        <div className="flex flex-row mt-2 gap-2">
           {
             skills.map((t, i) =>
-              <p key={i} className="text-sm">
-                {i != 0 && <span className="mx-1">•</span>}
-                {t} </p>
+              <SkillTag name={t} key={i}/>
             )
           }
         </div>

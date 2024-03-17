@@ -10,7 +10,7 @@
     --background-end-rgb: 0, 0, 0;
     --grid-color: 255, 255, 255, 0.033;
     --border: 255, 255, 255, 0.2;
-    --primary: 346.8 77.2% 49.8%;
+    --primary: 161, 94%, 30%
   }
 
   [data-theme="dark"] {
@@ -19,7 +19,7 @@
     --background-end-rgb: 0, 0, 0;
     --grid-color: 255, 255, 255, 0.033;
     --border: 255, 255, 255, 0.2;
-    --primary: 346.8 77.2% 49.8%;
+    --primary: 161, 94%, 30%
   }
 }
 
@@ -34,6 +34,10 @@
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .b {
+    color:hsl(161, 94%, 30%)
   }
 
   .cursor-newtab {
