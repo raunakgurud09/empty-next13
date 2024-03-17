@@ -34,7 +34,7 @@ export const CursorContainer = ({ children }: React.PropsWithChildren) => {
   }, []);
 
   return (
-    <motion.div ref={containerRef} className={cn('relative')}>
+    <motion.div ref={containerRef} className={cn('relative cursor-none ')}>
       <motion.div
         className='bg-white rounded-full pointer-events-none absolute z-[100] aspect-square w-2 -translate-x-1/2 -translate-y-1/2  mix-blend-difference'
         animate={{
