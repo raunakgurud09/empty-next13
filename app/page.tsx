@@ -1,3 +1,4 @@
+import { Contact } from "@/components/Contact";
 import { CursorContainer } from "@/components/animation/cursor-container";
 import Blog from "@/components/blog";
 import Experience from "@/components/experience";
@@ -12,6 +13,7 @@ export default function Home() {
         <Experience />
         <Project />
         <Blog />
+        <Contact />
       </main>
     </CursorContainer>
   )
