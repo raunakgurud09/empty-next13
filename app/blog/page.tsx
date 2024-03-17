@@ -76,49 +76,55 @@ export default function BlogPage({ params }: PostPageProps) {
   // const author = undefined
 
   return (
-    <div className="container mx-auto px-4 overflow-hidden py-12 lg:py-20">
+    <div className="w-full">
+
+      {/* <h1 className='h0 text-muted-foreground mt-2 max-w-4xl font-medium leading-tight'>
+        Leave whatever you like to say—message, appreciation, suggestions.
+      </h1> */}
 
       <FeaturedBlog
         blog={blog}
       // authors={author}
       />
 
-      <div className="my-10 border border-border" />
+      <div className="my-20 border border-border w-full" />
 
-      {/* search box */}
-      <div className="w-full my-2 h-8 flex justify-end">
-        <div className="flex items-center relative">
-          <Search size={16} className="absolute left-2" />
-          <input
-            autoComplete="off"
-            type="search"
-            placeholder="Search blog"
-            value={searchKey}
-            onChange={handleSearchChange}
-            className="w-[300px] pl-8 px-1 py-1 rounded-md border border-white/30 outline outline-[0px] focus:ring-0 bg-transparent"
-          />
+      <div className="max-w-[1360px] mx-auto">
+        {/* search box */}
+        <div className="w-full my-2 h-8 flex justify-end">
+          <div className="flex items-center relative">
+            <Search size={16} className="absolute left-2" />
+            <input
+              autoComplete="off"
+              type="search"
+              placeholder="Search blog"
+              value={searchKey}
+              onChange={handleSearchChange}
+              className="w-[300px] pl-8 px-1 py-1 rounded-md border border-white/30 outline outline-[0px] focus:ring-0 bg-transparent"
+            />
+          </div>
         </div>
+        {posts?.length ? (
+          <div className="grid grid-cols-12 ny-8 md:my-16 lg:gap-16">
+            {posts.map((post, index) => {
+
+              const authors = blog.authors.map((author) => {
+                return allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+              }).slice(0, -1)
+
+              return (
+                <BlogCard
+                  blog={post}
+                  authors={authors}
+                />
+              )
+            })
+            }
+          </div>
+        ) : (
+          <div className="h-96">No result.</div>
+        )}
       </div>
-      {posts?.length ? (
-        <div className="grid grid-cols-12 ny-8 md:my-16 lg:gap-16">
-          {posts.map((post, index) => {
-
-            const authors = blog.authors.map((author) => {
-              return allAuthors.find(({ slug }) => slug === `/authors/${author}`)
-            }).slice(0, -1)
-
-            return (
-              <BlogCard
-                blog={post}
-                authors={authors}
-              />
-            )
-          })
-          }
-        </div>
-      ) : (
-        <div className="h-96">No result.</div>
-      )}
     </div>
   )
 }
@@ -131,38 +137,39 @@ interface FeatureBlogProps {
 
 const FeaturedBlog = ({ blog, authors }: FeatureBlogProps) => {
 
-
   return (
-    <div className="grid grid-8 lg:grid-cols-2 lg:gap-16  my-1 md:my-6">
-      <div className="relative w-full aspect-[2/1] lg:aspect-[3/2] overflow-auto rounded-lg border-[0.1px] border-white/10">
-        <Image
-          src={(blog.image ? blog.image : blog.image)}
-          layout="fill"
-          objectFit="cover"
-          alt="blog thumbnail"
-          className="hover: "
-        />
-      </div>
-      <div className="flex h-full bg-blu-200/10 justify-center flex-col space-y-2 ">
-        <div className="text-scale-900 flex space-x-2 text-sm text-white/80">
-          <p>{format(new Date(blog.date), " dd MMMM yyyy ")}</p>
-          <p>•</p>
-          <p>{blog.readingTime} min</p>
+    <div className="max-w-[1360px] mx-auto">
+      <div className="grid grid-8 lg:grid-cols-2 lg:gap-16 p-8  my-1 md:my-6">
+        <div className="relative w-full aspect-[2/1] lg:aspect-[3/2] overflow-auto rounded-lg border-[0.1px] border-white/10">
+          <Image
+            src={(blog.image ? blog.image : blog.image)}
+            layout="fill"
+            objectFit="cover"
+            alt="blog thumbnail"
+            className="hover: "
+          />
         </div>
-        <div className="space-y-1">
-          <h2 className="font-semibold text-5xl">
-            {blog.title}
-          </h2>
-          <p className="font-light text-lg text-white/80">
-            {blog.description}
-          </p>
-          {/* <p className="font-light text-sm text-white/80">
+        <div className="flex h-full bg-blu-200/10 justify-center flex-col space-y-2 ">
+          <div className="text-scale-900 flex space-x-2 text-sm text-white/80">
+            <p>{format(new Date(blog.date), " dd MMMM yyyy ")}</p>
+            <p>•</p>
+            <p>{blog.readingTime} min</p>
+          </div>
+          <div className="space-y-1">
+            <h2 className="font-semibold text-5xl">
+              {blog.title}
+            </h2>
+            <p className="font-light text-lg text-white/80">
+              {blog.description}
+            </p>
+            {/* <p className="font-light text-sm text-white/80">
             {blog.body.raw.slice(6, 1000)}
           </p> */}
-        </div>
+          </div>
 
-        <div className="grid  w-max grid-flow-col  gap-4 ">
-          {/* <AuthorCard/> */}
+          <div className="grid  w-max grid-flow-col  gap-4 ">
+            {/* <AuthorCard/> */}
+          </div>
         </div>
       </div>
     </div>

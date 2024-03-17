@@ -1,14 +1,14 @@
 "use client"
 
-import briefly from "@/assets/briefly_logo.png"
-import NextImage from "next/image"
+import Image from "next/image"
 import SkillCard from "./skillCard"
-import { Atom, BookPlus, Boxes, Cat, Clapperboard, ContainerIcon, Link, Pencil, Plus, Wind } from "lucide-react"
+import { AlignJustify, Atom, BookPlus, Boxes, Cat, Clapperboard, ContainerIcon, LayoutGrid, Link, Pencil, Plus, Wind } from "lucide-react"
 import { useState } from "react"
 import More from "./more"
 import { AiFillGithub } from "react-icons/ai"
 
 import { projects } from "@/data/projects.js"
+import UnstyledLink from "./links/UnstyledLink"
 
 const skills = [
   {
@@ -56,15 +56,34 @@ const skills = [
 ]
 
 export default function Project() {
+
+  const [toggle, setToggle] = useState(false)
+
+
   return (
     <section id="projects" className="flex flex-col w-full mx-auto space-y-4 drop-shadow-2xl">
-      <h3 className="text-2xl px-4 font-bold">Project</h3>
-      <div className="flex flex-col space-y-2">
-        {
-          projects.map(
-            (proj) => {
-              return (
-                <ProjectCard
+
+      <div className="flex items-center justify-between">
+        <h3 className="text-2xl px-4 font-bold">Project</h3>
+        <button
+          onClick={() => {
+            console.log(toggle);
+            setToggle(!toggle);
+          }}
+          className="hover:bg-white/20 p-1 rounded-md"
+        >
+          {
+            toggle ? <AlignJustify /> : <LayoutGrid />
+          }
+        </button>
+      </div>
+
+      {
+        toggle
+          ? (
+            <div className='mt-4 grid w-full grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-2'>
+              {projects.map((proj) => (
+                <GridProjectCard
                   key={proj._id}
                   _id={proj._id.toString()}
                   name={proj.name}
@@ -74,13 +93,36 @@ export default function Project() {
                   image={proj.image}
                   brief={proj.brief}
                 />
-              )
-            }
+              ))}
+            </div>
           )
-        }
-      </div>
-      {/* {< li className = "px-4" key = { proj._id } >
-          </>} */}
+          : (
+            <div className="flex flex-col space-y-2">
+              {
+                projects.map(
+                  (proj) => {
+                    return (
+                      <ProjectCard
+                        key={proj._id}
+                        _id={proj._id.toString()}
+                        name={proj.name}
+                        date={proj.date}
+                        live_website={proj.live_website}
+                        github={proj.github}
+                        image={proj.image}
+                        brief={proj.brief}
+                      />
+                    )
+                  }
+                )
+              }
+            </div>
+
+          )
+      }
+
+
+
 
 
     </section >
@@ -92,9 +134,9 @@ type Props = {
   date?: string;
   name: string;
   live_website?: string;
-  github?: string;
+  github: string;
   brief: string;
-  image?: string;
+  image: string;
   skills?: {
     name?: string;
     icon?: string;
@@ -153,5 +195,44 @@ function ProjectCard({
         </div>
       </div>
     </div>
+  )
+}
+
+export const GridProjectCard = ({
+  _id,
+  date,
+  name,
+  live_website,
+  github,
+  brief,
+  image,
+}: Props) => {
+  return (
+    <UnstyledLink
+      href={github}
+      className='relative group p-2 focus-visible:rounded-2xl  '
+      trackEventTag={`Project Card - ${name}`}
+    >
+      <div className='absolute inset-0 z-10 aspect-video  rounded-xl group-hover:bg-black/80 flex items-end'>
+        <p className='p-3  mt-1 text-xs opacity-0 transition-all group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100'>
+          {brief}
+        </p>
+      </div>
+
+      <div className='aspect-video overflow-hidden rounded-xl'>
+        <Image
+          className='h-full w-full object-cover transition-all group-hover:scale-110 '
+          width={1000}
+          height={1800}
+          src={image}
+          alt={name}
+        />
+      </div>
+
+      <p className='h4 after:bg-light after:dark:bg-primary relative mt-2 max-w-max font-normal after:absolute after:bottom-0 after:right-0 after:h-[2px] after:w-0 after:transition-all after:duration-200 group-hover:after:left-0 group-hover:after:right-auto group-hover:after:w-full'>
+        {name}
+      </p>
+
+    </UnstyledLink>
   )
 }

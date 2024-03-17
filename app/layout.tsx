@@ -5,17 +5,8 @@ import type { Metadata } from 'next'
 import { siteConfig } from '@/config/site'
 
 import { Inter } from 'next/font/google'
-import { Space_Grotesk } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
-
-const space_grotesk = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space-grotesk',
-})
-// import { Noto_Serif_JP } from "next/font/google"
-// const noto = Noto_Serif_JP({ })
 
 import Header from '@/components/header'
 import Footer from '@/components/footer'
@@ -78,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       suppressHydrationWarning
-      className={`${space_grotesk.variable} scroll-smooth`}
+      className={` scroll-smooth`}
       lang="en"
     >
       <body>
