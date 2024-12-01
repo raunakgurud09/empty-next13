@@ -8,7 +8,7 @@ export const About = () => {
       <div className="p-1 w-1/2  text-white">
         <h3 className="font-semibold text-xl">BACKGROUND</h3>
         <div className="space-y-3 mt-3 font-light">
-          <p>I'm currently an Engineer building things for the web with some awesome people. I recently graduated from Mumbai University after completing 2 awesome six-month internships at <UnderlineLink href="https://www.fullcover.in"><strong>Fullcover</strong></UnderlineLink> and <UnderlineLink href="https://https://entrespace.in"><strong>Enterspace</strong></UnderlineLink>.
+          <p>I'm currently an working as software engineer at <UnderlineLink href="https://getsaral.com"><strong>SARAL</strong></UnderlineLink>. I recently graduated from Mumbai University after completing 2 awesome six-month internships at <UnderlineLink href="https://www.fullcover.in"><strong>Fullcover</strong></UnderlineLink> and <UnderlineLink href="https://https://entrespace.in"><strong>Enterspace</strong></UnderlineLink>.
           </p>
           <p>As a software engineer, I enjoy bridging the gap between ideas and execution — combining my technical knowledge with design to create a beautiful product. My goal is to always build applications that are scalable and efficient under the hood.
           </p>

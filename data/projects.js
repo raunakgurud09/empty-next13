@@ -46,7 +46,7 @@ export const projects = [
     date: "Jun 2022 - Aug 2023",
     name: "Renm - store and share tracks",
     live_website: "https://music-app-seven-beryl.vercel.app",
-    github: "https://github.com/raunakgurud09/briefly",
+    github: "https://github.com/raunakgurud09/music-app",
     brief:
       "Followed industry best practices to create a scalable and robust application. Created an intuitive user interface that allows users to easily upload, share, and manage their tracks.Enabled users to create and share playlists. Resulted in a high‑quality and feature‑rich music hosting platform that caters to both casual and professional users",
     image: "/images/projects/renm.png",

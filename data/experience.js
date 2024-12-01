@@ -1,14 +1,14 @@
 export const experiences = [
-  // {
-  //   _id: "1",
-  //   date: "Feb 2024 - ongoing",
-  //   position: "Software developer",
-  //   proof_of_work: "https://www.myjarwiz.com",
-  //   place_of_work: "Jarwiz",
-  //   brief:
-  //     "Worked as a software developer building a microservice architecture for storing and retrieval of important documents. Designed a modern user interface, implemented backend logic and data storage, and ensured a secure checkout process.",
-  //   skills: ["React", "Node", "Python", "Django","DynamoDB", "AWS"],
-  // },
+  {
+    _id: "1",
+    date: "June 2024 - ongoing",
+    position: "Software developer",
+    proof_of_work: "https://getsaral.com",
+    place_of_work: "SARAL",
+    brief:
+      "Delivered pixel-perfect designs with a strong focus on creating seamless and intuitive user experiences, ensuring strict adherence to design specifications. Took end-to-end ownership of features, managing every aspect from planning and documentation to development, testing, and deployment. Actively contributed to enhancing development processes by introducing innovative solutions, such as transitioning the codebase to TypeScript, which improved maintainability, enhanced type safety, and boosted developer productivity.",
+    skills: ["NextJs", "React", "Node", "Typescript", "AWS"],
+  },
   {
     _id: "2",
     date: "Apr 2023 - Oct 2023",
